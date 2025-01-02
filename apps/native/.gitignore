@@ -16,6 +16,8 @@ expo-env.d.ts
 *.p8
 *.p12
 *.key
+*.ipa
+*.aab
 *.mobileprovision
 
 # Metro
@@ -37,3 +39,4 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+raceweek-443421-b79419eae918.json
