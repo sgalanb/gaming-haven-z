@@ -1,0 +1,21 @@
+{
+  "name": "@repo/utils",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "lint": "eslint . --max-warnings 0",
+    "clean": "git clean -xdf dist node_modules"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@types/node": "^20.11.24",
+    "typescript": "catalog:"
+  }
+}
