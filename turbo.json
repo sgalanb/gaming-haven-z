@@ -11,7 +11,8 @@
         "UPSTASH_REDIS_REST_TOKEN",
         "TWITCH_CLIENT_ID",
         "TWITCH_CLIENT_SECRET",
-        "CRON_SECRET"
+        "CRON_SECRET",
+        "IGDB_BASE_URL"
       ]
     },
     "lint": {
@@ -33,7 +34,8 @@
         "UPSTASH_REDIS_REST_TOKEN",
         "TWITCH_CLIENT_ID",
         "TWITCH_CLIENT_SECRET",
-        "CRON_SECRET"
+        "CRON_SECRET",
+        "IGDB_BASE_URL"
       ]
     }
   }
