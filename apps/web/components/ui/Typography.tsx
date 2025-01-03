@@ -2,12 +2,12 @@ import { cn } from '@/lib/utils'
 
 export function H1({
   children,
-  as = 'h1',
   className,
+  as = 'h1',
 }: {
   children: React.ReactNode
-  as?: React.ElementType
   className?: string
+  as?: React.ElementType
 }) {
   const Tag = as
   // text fill: linear gradient from #6727A6 to #3C1661
@@ -23,8 +23,51 @@ export function H1({
   )
 }
 
-// background: linear-gradient(273.17deg, #6727A6 8.25%, #3C1661 91.72%);
-// -webkit-background-clip: text;
-// -webkit-text-fill-color: transparent;
-// background-clip: text;
-// text-fill-color: transparent;
+export function H2({
+  children,
+  className,
+  as = 'h2',
+}: {
+  children: React.ReactNode
+  className?: string
+  as?: React.ElementType
+}) {
+  const Tag = as
+  return (
+    <Tag className={cn('text-base font-semibold', className)}>{children}</Tag>
+  )
+}
+
+export function H3({
+  children,
+  className,
+  as = 'h3',
+}: {
+  children: React.ReactNode
+  className?: string
+  as?: React.ElementType
+}) {
+  const Tag = as
+  return (
+    <Tag className={cn('text-sm font-medium text-[#775C90]', className)}>
+      {children}
+    </Tag>
+  )
+}
+
+export function H4({
+  children,
+  className,
+  as = 'h4',
+}: {
+  children: React.ReactNode
+  className?: string
+  as?: React.ElementType
+}) {
+  const Tag = as
+  return (
+    <Tag className={cn('text-sm font-medium text-[#666666]', className)}>
+      {children}
+    </Tag>
+  )
+}
