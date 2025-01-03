@@ -19,7 +19,7 @@ export async function GET(
         'Client-ID': process.env.TWITCH_CLIENT_ID as string,
         Authorization: `Bearer ${accessToken}`,
       },
-      body: `fields slug, name, involved_companies.company.name, involved_companies.company.parent, cover.height, cover.width, cover.image_id, total_rating, first_release_date, genres.name, summary, platforms.name, screenshots.height, screenshots.width, screenshots.image_id, similar_games.name, similar_games.slug, similar_games.cover.image_id, similar_games.cover.height, similar_games.cover.width; where slug = "${slug}";`,
+      body: `fields slug, name, involved_companies.company.name, cover.height, cover.width, cover.image_id, total_rating, first_release_date, genres.name, summary, platforms.name, screenshots.height, screenshots.width, screenshots.image_id, similar_games.name, similar_games.slug, similar_games.cover.image_id, similar_games.cover.height, similar_games.cover.width; where slug = "${slug}";`,
     })
 
     const data = await response.json()

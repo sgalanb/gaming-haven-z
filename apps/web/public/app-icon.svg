@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="linear-gradient" x1="12" y1="36.9" x2="12" y2="-1.5" gradientTransform="translate(0 42) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#ffb4f0" stop-opacity=".1"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1=".75" y1="18.75" x2="22.95" y2="40.95" gradientTransform="translate(0 42) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff00ae"/>
+      <stop offset="1" stop-color="#ff97de"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect width="24" height="24" rx="8" ry="8" shape-rendering="crispEdges" style="fill: url(#linear-gradient);"/>
+      <rect x=".5" y=".5" width="23" height="23" rx="7.5" ry="7.5" shape-rendering="crispEdges" style="fill: none; stroke: url(#linear-gradient-2);"/>
+    </g>
+    <path d="M13.25,14.75l-5.75-5.75v-1.5h1.5l5.75,5.75" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+    <path d="M12.5,15.5l3-3" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+    <path d="M14,14l2,2" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+    <path d="M15.5,16.5l1-1" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+    <path d="M13.25,9.25l1.75-1.75h1.5v1.5l-1.75,1.75" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+    <path d="M8.5,13l2,2" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+    <path d="M9.5,14.5l-1.5,1.5" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+    <path d="M7.5,15.5l1,1" style="fill: none; stroke: #3c1661; stroke-linecap: round; stroke-linejoin: round;"/>
+  </g>
+</svg>

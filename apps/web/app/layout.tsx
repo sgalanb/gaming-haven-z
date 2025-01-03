@@ -1,3 +1,4 @@
+import { Header } from '@/components/Header'
 import { Toaster } from '@/components/ui/Sonner'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -21,8 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.className}`}>
-      <body>
-        {children}
+      <body className="bg-white antialiased selection:bg-palette-violet-900 selection:text-white">
+        <Header />
+        <div className="flex min-h-screen w-full items-start justify-center">
+          {children}
+        </div>
         <Toaster position="bottom-center" offset={40} richColors />
       </body>
     </html>
