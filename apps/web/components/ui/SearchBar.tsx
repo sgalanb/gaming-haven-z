@@ -99,6 +99,7 @@ export function SearchBar({ suggestedGames }: { suggestedGames: Game[] }) {
                   result={game}
                   key={game.slug}
                   setIsFocused={setIsFocused}
+                  setSearchQuery={setSearchQuery}
                 />
               ))}
             </div>
@@ -118,6 +119,7 @@ export function SearchBar({ suggestedGames }: { suggestedGames: Game[] }) {
                 <SearchResult
                   result={result}
                   setIsFocused={setIsFocused}
+                  setSearchQuery={setSearchQuery}
                   key={result.slug}
                 />
               ))}
@@ -136,15 +138,20 @@ export function SearchBar({ suggestedGames }: { suggestedGames: Game[] }) {
 function SearchResult({
   result,
   setIsFocused,
+  setSearchQuery,
 }: {
   result: GameSearchResult
   setIsFocused: (isFocused: boolean) => void
+  setSearchQuery: (searchQuery: string) => void
 }) {
   return (
     <Link
       href={`/games/${result.slug}`}
       className="flex items-center gap-3 rounded-md px-2 py-1.5 hover:opacity-85"
-      onClick={() => setIsFocused(false)}
+      onClick={() => {
+        setIsFocused(false)
+        setSearchQuery('')
+      }}
     >
       <UnoptimizedImage
         src={getIGDBImageUrl('cover_small', result.cover?.image_id)}

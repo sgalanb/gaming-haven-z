@@ -2,7 +2,37 @@ import { H1, H2, H3, H4 } from '@/components/ui/Typography'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
 import { getGame, getIGDBImageUrl } from '@repo/utils'
 import { Calendar, Puzzle, Star } from 'lucide-react'
+import { Metadata } from 'next'
 import Link from 'next/link'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const slug = (await params).slug
+
+  const game = await getGame(slug, 'production')
+
+  return {
+    title: `${game.name} ${game.first_release_date ? `(${new Date(game.first_release_date * 1000).getFullYear()})` : ''} - Gaming Haven`,
+    openGraph: {
+      title: `${game.name} ${game.first_release_date ? `(${new Date(game.first_release_date * 1000).getFullYear()})` : ''} - Gaming Haven`,
+      description: game.summary,
+      images: `https://sharepreviews.com/og/add16c4d-b782-40ef-bd6a-6b577c8b301a?company_value=${game.involved_companies[0]?.company.name}&name_value=${game.name}&cover_src=${getIGDBImageUrl('cover_big', game.cover?.image_id)}`,
+      url: `https://gaminghaven.com/games/${game.slug}`,
+      siteName: 'Gaming Haven Z',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${game.name} ${game.first_release_date ? `(${new Date(game.first_release_date * 1000).getFullYear()})` : ''} - Gaming Haven`,
+      description: game.summary,
+      images: `https://sharepreviews.com/og/add16c4d-b782-40ef-bd6a-6b577c8b301a?company_value=${game.involved_companies[0]?.company.name}&name_value=${game.name}&cover_src=${getIGDBImageUrl('cover_big', game.cover?.image_id)}`,
+      creator: '@gaminghavenz',
+      site: '@gaminghavenz',
+    },
+  }
+}
 
 export default async function GamePage({
   params,
@@ -32,42 +62,48 @@ export default async function GamePage({
       </div>
 
       <div className="flex flex-wrap gap-2">
-        <Badge>
-          <Star color="#6727A6" size={16} />
-          <H3 as="span" className="text-palette-violet-600">
-            Rating:
-          </H3>
-          <H3
-            as="span"
-            className="line-clamp-1 text-ellipsis text-palette-violet-900"
-          >
-            {(game.total_rating / 10).toFixed(1)}
-          </H3>
-        </Badge>
-        <Badge>
-          <Calendar color="#6727A6" size={16} />
-          <H3 as="span" className="text-palette-violet-600">
-            Release:
-          </H3>
-          <H3
-            as="span"
-            className="line-clamp-1 text-ellipsis text-palette-violet-900"
-          >
-            {new Date(game.first_release_date * 1000).toLocaleDateString()}
-          </H3>
-        </Badge>
-        <Badge>
-          <Puzzle color="#6727A6" size={16} />
-          <H3 as="span" className="text-palette-violet-600">
-            Genre:
-          </H3>
-          <H3
-            as="span"
-            className="line-clamp-1 text-ellipsis text-palette-violet-900"
-          >
-            {game.genres.map((genre) => genre.name).join(' & ')}
-          </H3>
-        </Badge>
+        {game.total_rating && (
+          <Badge>
+            <Star color="#6727A6" size={16} />
+            <H3 as="span" className="text-palette-violet-600">
+              Rating:
+            </H3>
+            <H3
+              as="span"
+              className="line-clamp-1 text-ellipsis text-palette-violet-900"
+            >
+              {(game.total_rating / 10).toFixed(1)}
+            </H3>
+          </Badge>
+        )}
+        {game.first_release_date && (
+          <Badge>
+            <Calendar color="#6727A6" size={16} />
+            <H3 as="span" className="text-palette-violet-600">
+              Release:
+            </H3>
+            <H3
+              as="span"
+              className="line-clamp-1 text-ellipsis text-palette-violet-900"
+            >
+              {new Date(game.first_release_date * 1000).toLocaleDateString()}
+            </H3>
+          </Badge>
+        )}
+        {game.genres.length > 0 && (
+          <Badge>
+            <Puzzle color="#6727A6" size={16} />
+            <H3 as="span" className="text-palette-violet-600">
+              Genre:
+            </H3>
+            <H3
+              as="span"
+              className="line-clamp-1 text-ellipsis text-palette-violet-900"
+            >
+              {game.genres.map((genre) => genre.name).join(' & ')}
+            </H3>
+          </Badge>
+        )}
       </div>
 
       <div className="flex flex-col gap-2">

@@ -10,7 +10,7 @@ export type IGDBImage = {
 export type Game = {
   id: number;
   cover?: IGDBImage;
-  first_release_date: number;
+  first_release_date?: number;
   genres: {
     id: number;
     name: string;
@@ -36,7 +36,7 @@ export type Game = {
   }[];
   slug: string;
   summary: string;
-  total_rating: number;
+  total_rating?: number;
 };
 
 export type GameSearchResult = {
