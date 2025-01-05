@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/Button'
 import { H1, H2, H3, H4 } from '@/components/ui/Typography'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
 import { getGame, getIGDBImageUrl } from '@repo/utils'
@@ -43,10 +44,8 @@ export default async function GamePage({
 
   const game = await getGame(slug, 'development')
 
-  console.log(game)
-
   return (
-    <div className="mt-[3.375rem] flex w-full max-w-[45.5rem] flex-col items-start justify-start gap-6 px-4 sm:mt-[6.25rem] md:px-0">
+    <div className="mt-[3.375rem] flex w-full max-w-[45.5rem] flex-col items-start justify-start gap-6 px-4 sm:mt-20 md:px-0">
       <div className="flex gap-4">
         <UnoptimizedImage
           src={getIGDBImageUrl('cover_big', game.cover?.image_id)}
@@ -60,8 +59,13 @@ export default async function GamePage({
           <H3 className="line-clamp-1">
             {game.involved_companies?.[0]?.company.name}
           </H3>
+          <Button variant="outline" className="mt-4 hidden w-fit sm:block">
+            Collect game
+          </Button>
         </div>
       </div>
+
+      <Button className="w-full sm:hidden">Collect game</Button>
 
       <div className="flex flex-wrap gap-2">
         {game.total_rating && (

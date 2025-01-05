@@ -7,3 +7,9 @@
     --radius: 0.5rem;
   }
 }
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#3C1661] to-[#6727A6] bg-clip-text text-transparent;
+  }
+}

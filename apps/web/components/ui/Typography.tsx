@@ -14,7 +14,7 @@ export function H1({
   return (
     <Tag
       className={cn(
-        'bg-gradient-to-r from-[#3C1661] to-[#6727A6] bg-clip-text text-xl font-semibold text-transparent sm:text-2xl',
+        'gradient-text text-xl font-semibold sm:text-2xl',
         className
       )}
     >

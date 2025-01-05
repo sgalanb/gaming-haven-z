@@ -19,7 +19,6 @@ export async function searchGames(
   query: string,
   environment: "production" | "development"
 ): Promise<GameSearchResults> {
-  console.log(environment);
   const baseUrl = getBaseUrl(environment);
   const response = await fetch(`${baseUrl}/search?query=${query}`);
   return response.json();
