@@ -19,7 +19,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${game.name} ${game.first_release_date ? `(${new Date(game.first_release_date * 1000).getFullYear()})` : ''} - Gaming Haven`,
       description: game.summary,
-      images: `https://sharepreviews.com/og/add16c4d-b782-40ef-bd6a-6b577c8b301a?company_value=${game.involved_companies[0]?.company.name}&name_value=${game.name}&cover_src=${getIGDBImageUrl('cover_big', game.cover?.image_id)}`,
+      images: `https://sharepreviews.com/og/add16c4d-b782-40ef-bd6a-6b577c8b301a?company_value=${game.involved_companies?.[0]?.company.name}&name_value=${game.name}&cover_src=${getIGDBImageUrl('cover_big', game.cover?.image_id)}`,
       url: `https://gaminghaven.com/games/${game.slug}`,
       siteName: 'Gaming Haven Z',
     },
@@ -27,7 +27,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: `${game.name} ${game.first_release_date ? `(${new Date(game.first_release_date * 1000).getFullYear()})` : ''} - Gaming Haven`,
       description: game.summary,
-      images: `https://sharepreviews.com/og/add16c4d-b782-40ef-bd6a-6b577c8b301a?company_value=${game.involved_companies[0]?.company.name}&name_value=${game.name}&cover_src=${getIGDBImageUrl('cover_big', game.cover?.image_id)}`,
+      images: `https://sharepreviews.com/og/add16c4d-b782-40ef-bd6a-6b577c8b301a?company_value=${game.involved_companies?.[0]?.company.name}&name_value=${game.name}&cover_src=${getIGDBImageUrl('cover_big', game.cover?.image_id)}`,
       creator: '@gaminghavenz',
       site: '@gaminghavenz',
     },
@@ -43,6 +43,8 @@ export default async function GamePage({
 
   const game = await getGame(slug, 'development')
 
+  console.log(game)
+
   return (
     <div className="mt-[3.375rem] flex w-full max-w-[45.5rem] flex-col items-start justify-start gap-6 px-4 sm:mt-[6.25rem] md:px-0">
       <div className="flex gap-4">
@@ -56,7 +58,7 @@ export default async function GamePage({
         <div className="flex flex-col gap-2">
           <H1 className="line-clamp-3">{game.name}</H1>
           <H3 className="line-clamp-1">
-            {game.involved_companies[0]?.company.name}
+            {game.involved_companies?.[0]?.company.name}
           </H3>
         </div>
       </div>
@@ -125,18 +127,20 @@ export default async function GamePage({
       <div className="mb-4 flex w-full flex-col gap-2 sm:mb-[7.5rem]">
         <H1 as="h2">Similar games</H1>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(7.125rem,1fr))] gap-2 sm:grid-cols-[repeat(auto-fill,minmax(10.625rem,1fr))] sm:gap-4">
-          {game.similar_games.map((game) => (
+          {game.similar_games.map((game, index) => (
             <Link
               href={`/games/${game.slug}`}
               key={game.id}
-              className="hover:opacity-85"
+              className={`hover:opacity-85 ${index >= 9 && 'hidden'} ${
+                index >= 8 && 'sm:hidden'
+              }`}
             >
               <UnoptimizedImage
                 src={getIGDBImageUrl('cover_big', game.cover?.image_id)}
                 alt={game.name}
                 width={game.cover?.width ?? 170}
                 height={game.cover?.height ?? 226}
-                className="h-auto w-full rounded-lg"
+                className="h-auto w-full rounded-lg ring-1 ring-palette-violet-50"
               />
             </Link>
           ))}

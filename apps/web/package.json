@@ -16,6 +16,7 @@
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.2",
     "@repo/utils": "workspace:*",
+    "@tanstack/react-query": "catalog:",
     "@upstash/redis": "^1.34.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@tanstack/eslint-plugin-query": "catalog:",
     "@types/node": "^20",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",

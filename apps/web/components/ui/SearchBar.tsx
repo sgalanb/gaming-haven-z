@@ -3,42 +3,31 @@
 import { Input } from '@/components/ui/Input'
 import Spinner from '@/components/ui/Spinner'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
+import { useDebounce } from '@/hooks/useDebounce'
 import { getIGDBImageUrl, searchGames } from '@repo/utils'
-import { Game, GameSearchResult, GameSearchResults } from '@repo/utils/types'
+import { Game, GameSearchResult } from '@repo/utils/types'
+import { useQuery } from '@tanstack/react-query'
 import { Search, X } from 'lucide-react'
 import { AnimatePresence } from 'motion/react'
 import * as motion from 'motion/react-client'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
-export function SearchBar({ suggestedGames }: { suggestedGames: Game[] }) {
+export function SearchBar({
+  suggestedGames,
+}: {
+  suggestedGames: Game[] | undefined
+}) {
   const inputRef = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isFocused, setIsFocused] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [searchResults, setSearchResults] = useState<GameSearchResults>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const debouncedSearchQuery = useDebounce<typeof searchQuery>(searchQuery, 300)
 
-  useEffect(() => {
-    const debounceTimeout = setTimeout(async () => {
-      if (searchQuery.trim()) {
-        setIsLoading(true)
-        try {
-          const results = await searchGames(searchQuery, 'development')
-          setSearchResults(results)
-        } catch (error) {
-          console.error('Error searching games:', error)
-          setSearchResults([])
-        } finally {
-          setIsLoading(false)
-        }
-      } else {
-        setSearchResults([])
-      }
-    }, 300) // 300ms delay
-
-    return () => clearTimeout(debounceTimeout)
-  }, [searchQuery])
+  const { data: searchResults, isLoading } = useQuery({
+    queryKey: ['search', debouncedSearchQuery],
+    queryFn: () => searchGames(debouncedSearchQuery, 'development'),
+  })
 
   // Handle clicks outside the search container
   useEffect(() => {
@@ -58,7 +47,7 @@ export function SearchBar({ suggestedGames }: { suggestedGames: Game[] }) {
   return (
     <div
       ref={containerRef}
-      className="relative mt-5 flex w-full items-center justify-center px-4 sm:mt-6 sm:max-w-[22.375rem]"
+      className="relative flex w-full items-center justify-center px-4 sm:max-w-[22.375rem]"
     >
       <Search color="#E7C0DB" className="absolute left-8 size-4" />
       <Input
@@ -90,24 +79,32 @@ export function SearchBar({ suggestedGames }: { suggestedGames: Game[] }) {
 
       {/* Search dropdown */}
       {isFocused && (
-        <div className="absolute left-0 right-0 top-full mx-4 rounded-b-[1.25rem] border-x border-b border-[#FF00AE55] bg-white px-2 py-1.5 shadow-lg">
+        <div className="absolute left-0 right-0 top-full mx-4 flex min-h-10 items-center rounded-b-[1.25rem] border-x border-b border-[#FF00AE55] bg-white px-2 py-1.5 shadow-lg">
           {searchQuery.length === 0 ? (
-            <div className="flex flex-col">
+            <div className="flex w-full flex-col">
               <span className="px-2 text-base text-[#C698B8]">Recommended</span>
-              {suggestedGames.map((game) => (
-                <SearchResult
-                  result={game}
-                  key={game.slug}
-                  setIsFocused={setIsFocused}
-                  setSearchQuery={setSearchQuery}
-                />
-              ))}
+              {!suggestedGames ? (
+                <div className="my-2 flex w-full items-center justify-center">
+                  <Spinner className="size-5 fill-[#FF00AE55] text-palette-violet-50" />
+                </div>
+              ) : (
+                <>
+                  {suggestedGames?.map((game) => (
+                    <SearchResult
+                      result={game}
+                      key={game.slug}
+                      setIsFocused={setIsFocused}
+                      setSearchQuery={setSearchQuery}
+                    />
+                  ))}
+                </>
+              )}
             </div>
           ) : isLoading ? (
-            <div className="flex items-center justify-center">
+            <div className="flex w-full items-center justify-center">
               <Spinner className="size-5 fill-[#FF00AE55] text-palette-violet-50" />
             </div>
-          ) : searchResults.length > 0 ? (
+          ) : searchResults && searchResults.length > 0 ? (
             <div
               className="flex max-h-[13.875rem] flex-col overflow-y-auto"
               style={{
@@ -125,7 +122,7 @@ export function SearchBar({ suggestedGames }: { suggestedGames: Game[] }) {
               ))}
             </div>
           ) : (
-            <span className="px-2 text-base text-[#C698B8]">
+            <span className="h-full px-2 text-base text-[#C698B8]">
               No results found
             </span>
           )}

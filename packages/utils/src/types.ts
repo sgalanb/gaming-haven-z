@@ -15,7 +15,7 @@ export type Game = {
     id: number;
     name: string;
   }[];
-  involved_companies: {
+  involved_companies?: {
     id: number;
     company: {
       id: number;

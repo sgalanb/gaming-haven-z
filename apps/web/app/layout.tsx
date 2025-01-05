@@ -1,3 +1,4 @@
+import { Providers } from '@/app/providers'
 import { Header } from '@/components/Header'
 import { Toaster } from '@/components/ui/Sonner'
 import type { Metadata } from 'next'
@@ -38,11 +39,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.className}`}>
       <body className="bg-white antialiased selection:bg-palette-violet-900 selection:text-white">
-        <div className="flex min-h-screen w-full flex-col items-center justify-start">
-          <Header />
-          {children}
-        </div>
-        <Toaster position="bottom-center" offset={40} richColors />
+        <Providers>
+          <div className="flex min-h-screen w-full flex-col items-center justify-start">
+            <Header />
+            {children}
+          </div>
+          <Toaster position="bottom-center" offset={40} richColors />
+        </Providers>
       </body>
     </html>
   )
