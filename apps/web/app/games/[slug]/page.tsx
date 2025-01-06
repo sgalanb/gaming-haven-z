@@ -1,4 +1,5 @@
 import { CollectGameButton } from '@/components/CollectGameButton'
+import { MediaGallery } from '@/components/MediaGallery'
 import { H1, H2, H3, H4 } from '@/components/ui/Typography'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
 import { getGame, getIGDBImageUrl } from '@repo/utils'
@@ -139,8 +140,9 @@ export default async function GamePage({
       )}
 
       {game.screenshots && game.screenshots.length > 0 && (
-        <div className="flex flex-col gap-2">
+        <div className="flex w-full flex-col gap-2">
           <H2>Media</H2>
+          <MediaGallery media={game.screenshots} />
         </div>
       )}
 
