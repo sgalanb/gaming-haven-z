@@ -12,7 +12,7 @@ export type CollectedGameType = {
   cover?: Game['cover']
 }
 
-export function CollectGameButton({
+export default function CollectGameButton({
   className,
   name,
   slug,

@@ -1,4 +1,4 @@
-import { CollectGameButton } from '@/components/CollectGameButton'
+import { CollectGameButtonWrapper } from '@/components/CollectGameButtonWrapper'
 import { MediaGallery } from '@/components/MediaGallery'
 import { H1, H2, H3, H4 } from '@/components/ui/Typography'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
@@ -43,7 +43,9 @@ export default async function GamePage({
 }) {
   const slug = (await params).slug
 
-  const game = await getGame(slug, 'development')
+  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV)
+
+  const game = await getGame(slug, 'production')
 
   return (
     <div className="mb-4 mt-[3.375rem] flex w-full max-w-[45.5rem] flex-col items-start justify-start gap-6 px-4 sm:mb-[7.5rem] sm:mt-20 md:px-0">
@@ -60,7 +62,7 @@ export default async function GamePage({
           <H3 className="line-clamp-1">
             {game.involved_companies?.[0]?.company.name}
           </H3>
-          <CollectGameButton
+          <CollectGameButtonWrapper
             className="mt-4 hidden w-fit sm:block"
             slug={game.slug}
             name={game.name}
@@ -70,7 +72,7 @@ export default async function GamePage({
         </div>
       </div>
 
-      <CollectGameButton
+      <CollectGameButtonWrapper
         className="w-full sm:hidden"
         slug={game.slug}
         name={game.name}
