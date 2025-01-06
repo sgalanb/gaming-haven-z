@@ -31,6 +31,7 @@ export function SearchBar({
         debouncedSearchQuery,
         process.env.NEXT_PUBLIC_CURRENT_ENVIRONMENT as EnvironmentTypes
       ),
+    enabled: debouncedSearchQuery.length > 0,
   })
 
   // Handle clicks outside the search container
