@@ -44,7 +44,7 @@ export function HeaderMobile({
         {isHome && (
           <Link
             href="/"
-            className={`${isHome ? '' : 'pointer-events-none'} flex gap-2 px-4 hover:opacity-85`}
+            className={`${isHome ? '' : 'pointer-events-none'} flex items-center justify-center gap-2 px-4 hover:opacity-85`}
           >
             <UnoptimizedImage
               src="/app-icon.svg"
