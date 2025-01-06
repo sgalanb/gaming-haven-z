@@ -1,84 +1,36 @@
-# Turborepo starter
+<a href="https://gaming-haven-z.vercel.app/">
+  <p align="center" width="100%">
+    <img align="center" width="600px" height="315px" alt="Fintech Icons Argentina" src="https://gaming-haven-z.vercel.app/opengraph-image.png?9461250572adab5b">
+  </p>
+  <h1 align="center">Gaming Haven Z - The Letterboxd of Games</h1>
+</a>
 
-This is an official starter Turborepo.
+<p align="center">
+  Search through a vast library of games, track your collection, and never lose sight of what you love. Start exploring now!
+</p>
 
-## Using this example
+<div align="center">
+  <a href="https://links.sharepreviews.com/twitter">
+    <img src="https://badgen.net/badge/x/@gaminghavenz/6727A6?icon=twitter&label" alt="Twitter" />
+  </a>
+  <a href="https://github.com/sgalanb/sharepreviews?tab=AGPL-3.0-1-ov-file#readme">
+    <img src="https://badgen.net/badge/license/MIT/171717" alt="License" />
+  </a>
+</div>
 
-Run the following command:
+## Tech Stack
 
-```sh
-npx create-turbo@latest
-```
+- [Turborepo](https://turbo.build/repo/docs) – Monorepo build system
+- [TypeScript](https://www.typescriptlang.org) – Language
+- [Next.js](https://nextjs.org) – Framework
+- [Tailwind](https://tailwindcss.com) – CSS
+- [shadcn/ui](https://ui.shadcn.com/) – UI Components
+- [Vercel](https://vercel.com/) – Deployment
+- [Motion](https://motion.dev/docs) – Animations
+- [TanStack Query](https://tanstack.com/query/latest) – Asynchronous state management
+- [Upstash](https://upstash.com) – Redis (Twitch token storage)
+- [SharePreviews](https://sharepreviews.com) – Dynamic OG Images 😉
 
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## Links
+- [Website](https://gaming-haven-z.vercel.app/)
+- [Postman Collection](https://www.postman.com/sgalanb/workspace/public-collections/collection/25407013-d3cf72c7-69d1-465b-8e5c-5bad9761b41c?action=share&creator=25407013)
