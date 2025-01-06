@@ -38,13 +38,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.className}`}>
-      <body className="bg-white antialiased selection:bg-palette-violet-900 selection:text-white">
+      <body className="scroll-smooth bg-white antialiased selection:bg-palette-violet-900 selection:text-white">
         <Providers>
           <div className="flex min-h-screen w-full flex-col items-center justify-start">
             <Header />
             {children}
           </div>
-          <Toaster position="bottom-center" offset={40} richColors />
+          <Toaster
+            position="bottom-center"
+            theme="light"
+            offset={40}
+            richColors
+          />
         </Providers>
       </body>
     </html>

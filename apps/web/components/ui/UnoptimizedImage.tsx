@@ -7,12 +7,14 @@ export function UnoptimizedImage({
   alt,
   width,
   height,
+  priority,
   className,
 }: {
   src: string
   alt: string
   width: number
   height: number
+  priority?: boolean
   className?: string
 }) {
   return (
@@ -22,6 +24,7 @@ export function UnoptimizedImage({
       width={width}
       height={height}
       unoptimized
+      priority={priority}
       className={cn('pointer-events-none select-none', className)}
     />
   )

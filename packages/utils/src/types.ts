@@ -11,7 +11,7 @@ export type Game = {
   id: number;
   cover?: IGDBImage;
   first_release_date?: number;
-  genres: {
+  genres?: {
     id: number;
     name: string;
   }[];
@@ -23,19 +23,19 @@ export type Game = {
     };
   }[];
   name: string;
-  platforms: {
+  platforms?: {
     id: number;
     name: string;
   }[];
   screenshots?: IGDBImage[];
-  similar_games: {
+  similar_games?: {
     id: number;
     name: string;
     slug: string;
     cover?: IGDBImage;
   }[];
   slug: string;
-  summary: string;
+  summary?: string;
   total_rating?: number;
 };
 

@@ -11,7 +11,7 @@ import { Search, X } from 'lucide-react'
 import { AnimatePresence } from 'motion/react'
 import * as motion from 'motion/react-client'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 
 export function SearchBar({
   suggestedGames,
@@ -79,7 +79,7 @@ export function SearchBar({
 
       {/* Search dropdown */}
       {isFocused && (
-        <div className="absolute left-0 right-0 top-full mx-4 flex min-h-10 items-center rounded-b-[1.25rem] border-x border-b border-[#FF00AE55] bg-white px-2 py-1.5 shadow-lg">
+        <div className="absolute left-0 right-0 top-full z-20 mx-4 flex min-h-10 items-center rounded-b-[1.25rem] border-x border-b border-[#FF00AE55] bg-white px-2 py-1.5 shadow-[0px_4px_16px_#F2D0E766]">
           {searchQuery.length === 0 ? (
             <div className="flex w-full flex-col">
               <span className="px-2 text-base text-[#C698B8]">Recommended</span>
@@ -106,19 +106,20 @@ export function SearchBar({
             </div>
           ) : searchResults && searchResults.length > 0 ? (
             <div
-              className="flex max-h-[13.875rem] flex-col overflow-y-auto"
+              className="flex max-h-[13.875rem] w-full flex-col overflow-y-auto"
               style={{
                 scrollbarWidth: 'thin',
                 scrollbarColor: '#FF00AE55 #ffffff00',
               }}
             >
               {searchResults.map((result: GameSearchResult) => (
-                <SearchResult
-                  result={result}
-                  setIsFocused={setIsFocused}
-                  setSearchQuery={setSearchQuery}
-                  key={result.slug}
-                />
+                <Fragment key={result.slug}>
+                  <SearchResult
+                    result={result}
+                    setIsFocused={setIsFocused}
+                    setSearchQuery={setSearchQuery}
+                  />
+                </Fragment>
               ))}
             </div>
           ) : (
