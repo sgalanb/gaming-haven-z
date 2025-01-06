@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
         'Client-ID': process.env.TWITCH_CLIENT_ID as string,
         Authorization: `Bearer ${accessToken}`,
       },
-      body: `fields slug; offset ${offset}; limit 50; where total_rating > 95; where total_rating_count > 1000;`,
+      body: `fields slug; offset ${offset}; limit 50; where total_rating > 90; where total_rating_count > 100;`,
     })
 
     const data = await response.json()

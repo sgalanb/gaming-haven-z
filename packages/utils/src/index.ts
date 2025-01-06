@@ -38,7 +38,7 @@ export async function getGame(
   return response.json();
 }
 
-export async function getTop200Games(
+export async function getTopGames(
   offset: number,
   environment: EnvironmentTypes
 ): Promise<Game[]> {
