@@ -1,12 +1,13 @@
 'use client'
 
-import { H4 } from '@/components/ui/Typography'
+import { H1, H4 } from '@/components/ui/Typography'
 
 import { CollectedGameType } from '@/components/CollectGameButton'
 import { H2 } from '@/components/ui/Typography'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
+import NumberFlow from '@number-flow/react'
 import { getIGDBImageUrl } from '@repo/utils'
 import { Trash } from 'lucide-react'
 import * as motion from 'motion/react-client'
@@ -44,7 +45,22 @@ export default function CollectedGames() {
           )
 
   return (
-    <>
+    <div className="flex w-full flex-col items-start justify-start sm:items-center">
+      <div className="flex items-center justify-center gap-2">
+        <H1 as="h2">Saved games</H1>
+        <div className="flex items-center justify-center">
+          <span className="text-xl font-semibold text-palette-violet-600 sm:text-2xl">
+            (
+          </span>
+          <NumberFlow
+            className="text-xl font-semibold text-palette-violet-600 sm:text-2xl"
+            value={typedCollectedGames?.length ?? 0}
+          />
+          <span className="text-xl font-semibold text-palette-violet-600 sm:text-2xl">
+            )
+          </span>
+        </div>
+      </div>
       {collectedGames && collectedGames?.length > 0 ? (
         <div className="flex w-full max-w-[45.5rem] flex-col">
           {/* Ref to capture when the sticky div 'starts to stick' */}
@@ -127,7 +143,7 @@ export default function CollectedGames() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 
