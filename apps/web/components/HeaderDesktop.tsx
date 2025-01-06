@@ -43,6 +43,7 @@ export function HeaderDesktop({
           height={176.79}
           unoptimized
           priority
+          className="select-none"
         />
       </motion.div>
 

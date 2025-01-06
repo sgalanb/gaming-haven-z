@@ -134,6 +134,7 @@ export default function CollectedGames() {
             alt="Empty state"
             width={280}
             height={168}
+            className="pointer-events-none select-none"
           />
           <div className="flex flex-col items-center justify-center gap-2">
             <H2 className="text-center">Nothing collected yet</H2>
