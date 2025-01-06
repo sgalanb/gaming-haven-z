@@ -1,9 +1,14 @@
-import { Game, GameSearchResults, IGDBImageSize } from "./types.js";
+import {
+  EnvironmentTypes,
+  Game,
+  GameSearchResults,
+  IGDBImageSize,
+} from "./types.js";
 
-function getBaseUrl(environment: "production" | "development") {
-  return environment === "production"
-    ? "https://gaming-haven-z.vercel.app/api"
-    : "http://localhost:3005/api";
+function getBaseUrl(environment: EnvironmentTypes) {
+  return environment === "development"
+    ? "http://localhost:3005/api"
+    : "https://gaming-haven-z.vercel.app/api";
 }
 
 export function getIGDBImageUrl(
@@ -17,7 +22,7 @@ export function getIGDBImageUrl(
 
 export async function searchGames(
   query: string,
-  environment: "production" | "development"
+  environment: EnvironmentTypes
 ): Promise<GameSearchResults> {
   const baseUrl = getBaseUrl(environment);
   const response = await fetch(`${baseUrl}/search?query=${query}`);
@@ -26,7 +31,7 @@ export async function searchGames(
 
 export async function getGame(
   slug: string,
-  environment: "production" | "development"
+  environment: EnvironmentTypes
 ): Promise<Game> {
   const baseUrl = getBaseUrl(environment);
   const response = await fetch(`${baseUrl}/games/${slug}`);

@@ -5,7 +5,7 @@ import Spinner from '@/components/ui/Spinner'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
 import { useDebounce } from '@/hooks/useDebounce'
 import { getIGDBImageUrl, searchGames } from '@repo/utils'
-import { Game, GameSearchResult } from '@repo/utils/types'
+import { EnvironmentTypes, Game, GameSearchResult } from '@repo/utils/types'
 import { useQuery } from '@tanstack/react-query'
 import { Search, X } from 'lucide-react'
 import { AnimatePresence } from 'motion/react'
@@ -26,7 +26,11 @@ export function SearchBar({
 
   const { data: searchResults, isLoading } = useQuery({
     queryKey: ['search', debouncedSearchQuery],
-    queryFn: () => searchGames(debouncedSearchQuery, 'development'),
+    queryFn: () =>
+      searchGames(
+        debouncedSearchQuery,
+        process.env.NEXT_PUBLIC_CURRENT_ENVIRONMENT as EnvironmentTypes
+      ),
   })
 
   // Handle clicks outside the search container

@@ -12,7 +12,8 @@
         "TWITCH_CLIENT_ID",
         "TWITCH_CLIENT_SECRET",
         "CRON_SECRET",
-        "IGDB_BASE_URL"
+        "IGDB_BASE_URL",
+        "NEXT_PUBLIC_CURRENT_ENVIRONMENT"
       ]
     },
     "lint": {
@@ -35,7 +36,8 @@
         "TWITCH_CLIENT_ID",
         "TWITCH_CLIENT_SECRET",
         "CRON_SECRET",
-        "IGDB_BASE_URL"
+        "IGDB_BASE_URL",
+        "NEXT_PUBLIC_CURRENT_ENVIRONMENT"
       ]
     }
   }

@@ -3,6 +3,7 @@ import { MediaGallery } from '@/components/MediaGallery'
 import { H1, H2, H3, H4 } from '@/components/ui/Typography'
 import { UnoptimizedImage } from '@/components/ui/UnoptimizedImage'
 import { getGame, getIGDBImageUrl } from '@repo/utils'
+import { EnvironmentTypes } from '@repo/utils/types'
 import { Calendar, Puzzle, Star } from 'lucide-react'
 import { Metadata } from 'next'
 import Link from 'next/link'
@@ -14,7 +15,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const slug = (await params).slug
 
-  const game = await getGame(slug, 'production')
+  const game = await getGame(
+    slug,
+    process.env.NEXT_PUBLIC_CURRENT_ENVIRONMENT as EnvironmentTypes
+  )
 
   return {
     title: `${game.name} ${game.first_release_date ? `(${new Date(game.first_release_date * 1000).getFullYear()})` : ''} - Gaming Haven`,
@@ -43,9 +47,10 @@ export default async function GamePage({
 }) {
   const slug = (await params).slug
 
-  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV)
-
-  const game = await getGame(slug, 'production')
+  const game = await getGame(
+    slug,
+    process.env.NEXT_PUBLIC_CURRENT_ENVIRONMENT as EnvironmentTypes
+  )
 
   return (
     <div className="mb-4 mt-[3.375rem] flex w-full max-w-[45.5rem] flex-col items-start justify-start gap-6 px-4 sm:mb-[7.5rem] sm:mt-20 md:px-0">

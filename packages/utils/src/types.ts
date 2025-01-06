@@ -1,3 +1,5 @@
+export type EnvironmentTypes = "production" | "preview" | "development";
+
 export type IGDBImageSize = "cover_small" | "cover_big" | "1080p";
 
 export type IGDBImage = {
