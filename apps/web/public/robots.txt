@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gaming-haven-z.vercel.app/sitemap.xml

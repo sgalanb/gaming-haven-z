@@ -37,3 +37,12 @@ export async function getGame(
   const response = await fetch(`${baseUrl}/games/${slug}`);
   return response.json();
 }
+
+export async function getTop200Games(
+  offset: number,
+  environment: EnvironmentTypes
+): Promise<Game[]> {
+  const baseUrl = getBaseUrl(environment);
+  const response = await fetch(`${baseUrl}/top-games?offset=${offset}`);
+  return response.json();
+}
