@@ -42,6 +42,7 @@ export function HeaderDesktop({
           width={1390.8}
           height={176.79}
           unoptimized
+          priority
         />
       </motion.div>
 

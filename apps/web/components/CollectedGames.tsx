@@ -15,7 +15,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
-export function CollectedGames() {
+export default function CollectedGames() {
   const [collectedGames, setCollectedGames] = useLocalStorage<
     CollectedGameType[]
   >('collectedGames', [])
@@ -146,7 +146,6 @@ function Badge({
     <button className="relative" onClick={() => setSelectedFilter(filter)}>
       {selected && (
         <motion.div
-          layoutId="filter-background"
           className="absolute inset-0 rounded-full bg-palette-violet-900"
           transition={{ duration: 0.15 }}
         />

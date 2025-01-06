@@ -36,6 +36,7 @@ export function HeaderMobile({
           width={196.21}
           height={73.9}
           unoptimized
+          priority
         />
       </motion.div>
 

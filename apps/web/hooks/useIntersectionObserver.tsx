@@ -1,5 +1,3 @@
-'use client'
-
 import { RefCallback, useCallback, useRef, useState } from 'react'
 
 export function useIntersectionObserver(
