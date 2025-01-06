@@ -162,6 +162,7 @@ function Badge({
     <button className="relative" onClick={() => setSelectedFilter(filter)}>
       {selected && (
         <motion.div
+          layoutId="filter-background"
           className="absolute inset-0 rounded-full bg-palette-violet-900"
           transition={{ duration: 0.15 }}
         />
